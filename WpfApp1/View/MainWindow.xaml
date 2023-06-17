@@ -18,17 +18,17 @@
                         Value="1,1,4,5"/>
             </Style>
         </Grid.Resources>
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Height="200" Width="300"
+        <Border Margin="10"
                 BorderBrush="Black"
-                BorderThickness="2"
+                BorderThickness="2" Grid.Column="1"
                 CornerRadius="7">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -54,12 +54,12 @@
                 <TextBlock Text="Pressure:"
                            Grid.Row="2"/>
 
-                <TextBlock Text="{Binding LastMeasurement.Time}"
+                <TextBlock Text="{Binding LastMeasurement.Time, StringFormat='yyyy-MM-dd HH:mm'}"
                            Grid.Column="1"/>
-                <TextBlock Text="{Binding LastMeasurement.Temperature}"
+                <TextBlock Text="{Binding LastMeasurement.Temperature, StringFormat='{}{0}&#176;C'}"
                            Grid.Column="1"
             Grid.Row="1"/>
-                <TextBlock Text="{Binding LastMeasurement.Pressure}"
+                <TextBlock Text="{Binding LastMeasurement.Pressure, StringFormat='{}{0} HPa'}"
                            Grid.Column="1"
             Grid.Row="2"/>
             </Grid>
@@ -70,5 +70,57 @@
         Grid.Row="1"
                 Command="{Binding GetMeasurementCommand}"/>
 
+        <ItemsControl Grid.RowSpan="2" Margin="5" ItemsSource="{Binding Measurements}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.Template>
+                <ControlTemplate TargetType="ItemsControl">
+                    <ScrollViewer CanContentScroll="True">
+                        <ItemsPresenter/>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ItemsControl.Template>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="LightGray" Height="40" Margin="0,5" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="Margin" Value="5,0,0,0"/>
+                            </Style>
+                        </Grid.Resources>
+                        <TextBlock Text="{Binding Time, StringFormat='yyyy-MM-dd HH:mm'}"
+               Grid.Column="2"/>
+                        <TextBlock Text="{Binding Temperature, StringFormat='{}{0}&#176;C'}"
+               Grid.Column="0">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Temperature}" Value="18">
+                                            <Setter Property="Foreground" Value="Blue"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Temperature}" Value="28">
+                                            <Setter Property="Foreground" Value="Red"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Text="{Binding Pressure, StringFormat='{}{0} HPa'}"
+               Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Window>

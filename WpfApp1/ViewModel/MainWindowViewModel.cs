@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Documents;
 using WpfApp.MVVM;
 using WpfApp1.Model;
 using WpfApp1.Service;
@@ -13,6 +11,7 @@ namespace WpfApp1.ViewModel
     {
         private MeasurementService _service;
         private Measurement lastMeasurement;
+        private List<Measurement> measurements;
 
         public MainWindowViewModel()
         {
@@ -22,18 +21,17 @@ namespace WpfApp1.ViewModel
 
         public Command GetMeasurementCommand { get; set; }
 
+        public List<Measurement> Measurements { get => measurements; set => Set(ref measurements, value); }
+
         public Measurement LastMeasurement
         {
             get => lastMeasurement;
-            set
-            {
-                lastMeasurement = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref lastMeasurement, value);
         }
-        public void GetMeasurement()
+        public async void GetMeasurement()
         {
-            LastMeasurement = _service.Read();
+            Measurements = await _service.GetMeasurements(1000);
+            LastMeasurement = Measurements.Last();
         }
     }
 }
