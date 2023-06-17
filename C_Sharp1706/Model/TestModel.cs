@@ -6,13 +6,20 @@ using System.Threading.Tasks;
 
 namespace C_Sharp1706.Model
 {
-    internal class TestModel
+
+    internal abstract class TestModelBase
+    {
+
+    }
+
+    internal class TestModel : TestModelBase
     {
         public int Amount;
         private int level;
 
         public delegate void OnPropertyChanged(int propName);
         public event OnPropertyChanged PropertyChanged;
+
 
 
         public int GetAmount()
