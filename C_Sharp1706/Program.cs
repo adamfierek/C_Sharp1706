@@ -12,7 +12,7 @@ namespace C_Sharp1706
             _ = test.GetAmount();
             var x = test.Level;
 
-
+            
 
             test.WriteAction = WriteAmount;
             test.ProcessFunc = AddTwo;
@@ -22,6 +22,10 @@ namespace C_Sharp1706
 
             test.PropertyChanged += Test_PropertyChanged;
             test.Level = 5;
+
+
+
+
         }
 
         private static void Test_PropertyChanged(int propName)
