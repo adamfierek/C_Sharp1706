@@ -1,3 +1,5 @@
+using TestApp.Services;
+
 namespace WebApplication1
 {
     public class Program
@@ -9,6 +11,7 @@ namespace WebApplication1
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddSingleton<MeasurementService>();
 
             var app = builder.Build();
 
