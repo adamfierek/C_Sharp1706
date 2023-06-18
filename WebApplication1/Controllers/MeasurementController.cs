@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TestApp.Models;
 using TestApp.Services;
+using WebApplication1.Data;
 
 namespace WebApplication1.Controllers
 {
@@ -9,10 +10,12 @@ namespace WebApplication1.Controllers
     public class MeasurementController : ControllerBase
     {
         private MeasurementService _service;
+        private DatabaseContext _dbContext;
 
-        public MeasurementController(MeasurementService service)
+        public MeasurementController(MeasurementService service, DatabaseContext dbContext)
         {
             _service = service;
+            _dbContext = dbContext;
         }
 
         [HttpGet("info")]

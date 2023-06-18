@@ -8,6 +8,7 @@ namespace TestApp.Models
 {
     public class Measurement
     {
+        public int MeasurementId { get; set; }
         public DateTime Time { get; set; }
         public double Temperature { get; set; }
         public double Pressure { get; set; }
