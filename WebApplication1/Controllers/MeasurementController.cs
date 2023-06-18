@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TestApp.Models;
 using TestApp.Services;
 using WebApplication1.Data;
@@ -28,19 +29,28 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMeasurementsAsync()
         {
-            var measurements = await _service.GetMeasurements(10);
+            var measurements = await _dbContext.Measurements.Where(m => m.Time > DateTime.Now.AddDays(-30)).ToListAsync();
             return Ok(measurements);
         }
 
         [HttpPost]
-        public IActionResult AddMeasurement([FromBody] Measurement measurement) //optional attribute
+        public async Task<IActionResult> AddMeasurement([FromBody] Measurement measurement) //optional attribute
         {
             if (measurement.Time > DateTime.Now)
                 return BadRequest();
-            //save to db
+
+            _dbContext.Measurements.Add(measurement);
+
+            //additional db operations
+
+            await _dbContext.SaveChangesAsync();
 
             return NoContent();
         }
+
+
+
+
 
         [HttpGet("add/{a:int}/{b:int}")]
         public IActionResult AddAB([FromRoute] int a, [FromRoute] int b) //optional attribute
