@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Interop;
@@ -15,23 +16,20 @@ namespace WpfApp1.ViewModel
     public partial class MainWindowViewModel : ViewModelBase
     {
         private MeasurementService _service;
+        private ApiService _apiService;
         private Measurement lastMeasurement;
         private List<Measurement> measurements;
 
         public MainWindowViewModel()
         {
             _service = new MeasurementService();
+            _apiService = new ApiService("http://127.0.0.1:5000");
             GetMeasurementCommand = new Command(GetMeasurement);
             RunPInvoke = new Command(RunPInvokeCommand);
-            System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Elapsed += Timer_Elapsed;
-            timer.Interval = 1_000;
-            timer.Start();
-        }
-
-        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            Trace.WriteLine("Tick!");
+            Task.Run(async () =>
+            {
+                Measurements = await _apiService.GetMeasurements();
+            });
         }
 
         private void RunPInvokeCommand()
@@ -51,8 +49,11 @@ namespace WpfApp1.ViewModel
         }
         public async void GetMeasurement()
         {
-            Measurements = await _service.GetMeasurements(1000);
-            LastMeasurement = Measurements.Last();
+            /*Measurements = await _service.GetMeasurements(1000)*/;
+            var measurement = await _service.Read();
+            LastMeasurement = measurement;
+            await _apiService.SendMeasurement(measurement);
+            Measurements = await _apiService.GetMeasurements();
         }
     }
 }
