@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.33808.371
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C_Sharp1706", "C_Sharp1706\C_Sharp1706.csproj", "{57B1E55A-55C6-4479-AFD1-6F0698458AB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C_Sharp1706", "C_Sharp1706\C_Sharp1706.csproj", "{57B1E55A-55C6-4479-AFD1-6F0698458AB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C_Sharp1706_TopLevel", "C_Sharp1706_TopLevel\C_Sharp1706_TopLevel.csproj", "{60D81F9B-0FE8-40A3-B7FB-063416E86B1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C_Sharp1706_TopLevel", "C_Sharp1706_TopLevel\C_Sharp1706_TopLevel.csproj", "{60D81F9B-0FE8-40A3-B7FB-063416E86B1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{3AA5A326-49E7-4846-A366-84E28CD141CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{3AA5A326-49E7-4846-A366-84E28CD141CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp.MVVM", "WpfApp.MVVM\WpfApp.MVVM.csproj", "{380DE495-D4D3-4D73-B32C-107F71DEE20C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp.MVVM", "WpfApp.MVVM\WpfApp.MVVM.csproj", "{380DE495-D4D3-4D73-B32C-107F71DEE20C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{C326ABD1-5C4C-4BBF-980E-2CE5256B2882}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Models", "TestApp.Models\TestApp.Models.csproj", "{3EDC617E-C4DA-4254-B7A3-F35FF400D867}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Services", "TestApp.Services\TestApp.Services.csproj", "{B4D0FFCA-7BF4-4130-8B78-BAD0CC23F484}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{380DE495-D4D3-4D73-B32C-107F71DEE20C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{380DE495-D4D3-4D73-B32C-107F71DEE20C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{380DE495-D4D3-4D73-B32C-107F71DEE20C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C326ABD1-5C4C-4BBF-980E-2CE5256B2882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C326ABD1-5C4C-4BBF-980E-2CE5256B2882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C326ABD1-5C4C-4BBF-980E-2CE5256B2882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C326ABD1-5C4C-4BBF-980E-2CE5256B2882}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EDC617E-C4DA-4254-B7A3-F35FF400D867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EDC617E-C4DA-4254-B7A3-F35FF400D867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EDC617E-C4DA-4254-B7A3-F35FF400D867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EDC617E-C4DA-4254-B7A3-F35FF400D867}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4D0FFCA-7BF4-4130-8B78-BAD0CC23F484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4D0FFCA-7BF4-4130-8B78-BAD0CC23F484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4D0FFCA-7BF4-4130-8B78-BAD0CC23F484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4D0FFCA-7BF4-4130-8B78-BAD0CC23F484}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

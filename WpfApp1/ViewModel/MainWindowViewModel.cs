@@ -5,9 +5,10 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Interop;
+using TestApp.Models;
+using TestApp.Services;
 using WpfApp.MVVM;
-using WpfApp1.Model;
-using WpfApp1.Service;
+
 
 namespace WpfApp1.ViewModel
 {

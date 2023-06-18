@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TestApp.Models\TestApp.Models.csproj" />
+    <ProjectReference Include="..\TestApp.Services\TestApp.Services.csproj" />
     <ProjectReference Include="..\WpfApp.MVVM\WpfApp.MVVM.csproj" />
   </ItemGroup>
 
